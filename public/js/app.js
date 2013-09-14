@@ -4,11 +4,12 @@ $('#new-job-posting').on('submit', function(e){
   var form = $(this);
   var errClass= 'has-error';
 
-  var success = function(data) {
-    window.location = "/thanks";
-  };
-
   $('.form-group').removeClass(errClass);
+
+  var success = function(data) {
+    form.find('.alert').text(data.msg).addClass('alert-success');
+    form.addClass('is-success');
+  };
 
   var error = function(xhr, status, error) {
     var obj = xhr.responseJSON;

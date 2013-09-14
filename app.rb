@@ -175,7 +175,7 @@ class MeetupNotification
     p = posting
 
     # TODO set a obfuscated reply address
-    Malone.deliver(from: Settings::MAIL_FROM,
+    Malone.deliver(from: "#{p.id}@example.com",
                    to: Settings::LIST_ADDRESS,
                    subject: "[New Job Posting] #{p.company}",
                    text: MESSAGE % [ p.name, p.company, p.url, p.description ])
@@ -203,19 +203,18 @@ get "/" do
   erb :index
 end
 
-get "/thanks" do
-  erb :thanks
-end
-
 post "/jobs" do
   content_type :json
 
   job_posting = JobPosting.new(params)
 
   if job_posting.save
-    AdminNotification::Job.new.async.perform(job_posting)
+    # AdminNotification::Job.new.async.perform(job_posting)
     status 202
-    {status: 'ok'}.to_json
+    {
+      status: 'ok',
+      msg: 'Thanks, our admins have been notified and will review your request.'
+    }.to_json
   else
     status 400
     job_posting.errors.to_json
