@@ -5,6 +5,8 @@ require 'capybara/rspec'
 
 require_relative "./../app"
 
+Sinatra::Application.disable :logging
+
 # Need to require after app so test mocks load properly
 require "malone/test"
 require 'sucker_punch/testing/inline'
