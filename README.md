@@ -38,8 +38,16 @@ because it's easy, big, and free.  No real user accounts exists, as the
 approval process is performed entirely by email.  This is easier than
 having to login anyway.
 
+Also, note the system uses SuckerPunch for backgrounding the email sending
+to make the web app more snappy.  You can't run the service, even with Thin,
+with a rack reloader such as shotgun and have the mails sent.  However, the
+app will run fine with a reloader, other than jobs not executing in time.
+
 ## Todos
 
+- Render form posting validation failures back to the form.  Probably just
+  add the bootstrap error class.
+- Prevent form double submits via js
 - Setup a disposable email address in the system using a token, wired email
-replies via MailGun or SendGrid parse API to be redirected to this address.
+  replies via MailGun or SendGrid parse API to be redirected to this address.
 - Set reply-to/from of meetup notification messages to the disposable email
