@@ -43,6 +43,17 @@ to make the web app more snappy.  You can't run the service, even with Thin,
 with a rack reloader such as shotgun and have the mails sent.  However, the
 app will run fine with a reloader, other than jobs not executing in time.
 
+Finally, take note this app is written a bit differently than if you are
+used to Rails web apps. There's a few reasons for this:
+
+- To demonstrate a small Sinatra application for newer OCRuby members
+- For providing an example of an app that has no users, as they aren't
+  always required
+- It serves as an example of object modeling with small lower level tools
+  to get you thinking outside the box
+- Because using different patterns on side-projects is a good way to learn
+  and experiment with new techniques *and* fight boredom.
+
 ## Tests
 
 The app has a couple basic capybara tests.  Run with:
