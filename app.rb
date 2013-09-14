@@ -10,9 +10,11 @@ require "sucker_punch"
 
 set :erb, escape_html: true
 
-DB_URL = ENV.fetch('DB_URL').sub(%r{/\z}, '')
 
 module Settings
+  # A CouchDB/Cloudant URL for storing the posting in
+  DB_URL = ENV.fetch('DB_URL').sub(%r{/\z}, '')
+
   # The email address to send from
   MAIL_FROM    = ENV.fetch 'MAIL_FROM'
 
@@ -55,7 +57,7 @@ class JobPosting < Scrivener
   end
 
   def self.[](id)
-    raw_doc = RestClient.get("#{DB_URL}/#{id}")
+    raw_doc = RestClient.get("#{Settings::DB_URL}/#{id}")
     new JSON.parse(raw_doc)
   end
 
@@ -64,7 +66,7 @@ class JobPosting < Scrivener
 
     before_save
 
-    raw_doc = RestClient.post("#{DB_URL}", attributes.to_json, content_type: 'application/json')
+    raw_doc = RestClient.post("#{Settings::DB_URL}", attributes.to_json, content_type: 'application/json')
     doc = JSON.parse(raw_doc)
 
     self._id ||= doc["id"]
