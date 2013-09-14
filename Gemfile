@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem 'erubis', '~> 2.7.0'
+gem 'json', '~> 1.8.0'
 gem 'malone', '~> 1.0.5'
 gem 'rest-client', '~> 1.6.7'
 gem 'scrivener', '~> 0.2.0'

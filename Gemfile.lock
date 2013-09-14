@@ -6,6 +6,7 @@ GEM
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    json (1.8.0)
     mailfactory (1.4.0)
       mime-types (>= 1.13.1)
     malone (1.0.5)
@@ -37,6 +38,7 @@ PLATFORMS
 
 DEPENDENCIES
   erubis (~> 2.7.0)
+  json (~> 1.8.0)
   malone (~> 1.0.5)
   rest-client (~> 1.6.7)
   scrivener (~> 0.2.0)
