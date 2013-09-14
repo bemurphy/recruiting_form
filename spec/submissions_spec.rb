@@ -1,5 +1,9 @@
 feature "Handling form submission flow", js: true, type: :request do
 
+  def click_submit_button
+    click_button 'Get Connected Now!'
+  end
+
   def extract_approval_path(mail)
     mail.text.match(%r{\shttps?://\S+(/jobs\S+approve)\s})[1]
   end
@@ -13,7 +17,7 @@ feature "Handling form submission flow", js: true, type: :request do
     fill_in "url", with: "http://foobar.example.com"
     fill_in "description", with: "A job for you"
 
-    click_button 'Submit'
+    click_submit_button
 
     expect(page).to have_content("Thanks, our admins have been notified")
 
@@ -41,7 +45,7 @@ feature "Handling form submission flow", js: true, type: :request do
   scenario "with invalid data" do
     visit "/"
     fill_in "description", with: "A bogus post"
-    click_button 'Submit'
+    click_submit_button
 
     expect(page).not_to have_content("Thanks, our admins have been notified")
     mail = Malone.deliveries.last || OpenStruct.new
@@ -57,7 +61,7 @@ feature "Handling form submission flow", js: true, type: :request do
     fill_in "url", with: "http://foobar.example.com"
     fill_in "description", with: "A job for you"
 
-    click_button 'Submit'
+    click_submit_button
 
     mail = Malone.deliveries.last
     approval_path = extract_approval_path(mail)

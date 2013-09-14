@@ -1,6 +1,6 @@
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #eee;
 }
 
@@ -69,13 +69,20 @@ body {
   visibility: visible;
 }
 
+.new-job-posting [type="submit"] {
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding: 15px 20px 16px;
+  text-transform: uppercase;
+
+  -webkit-box-shadow: inset 0 -5px 0 rgba(0,0,0,0.10);
+     -moz-box-shadow: inset 0 -5px 0 rgba(0,0,0,0.10);
+          box-shadow: inset 0 -5px 0 rgba(0,0,0,0.10);
+}
+
 .new-job-posting.is-success [type="submit"] {
   display: none;
   visibility: hidden;
-}
-
-.new-job-posting [type="submit"] {
-  margin-bottom: 15px;
 }
 
 .new-job-posting .privacy-disclaimer {
