@@ -1,10 +1,9 @@
-$('#new-job-posting').on('submit', function(e){
-  e.preventDefault();
-
-  var form = $(this);
+var jobPostingForm = function(selector, action) {
+  var form = $(selector);
+  var btn = form.find('[type="submit"]');
   var errClass= 'has-error';
-
-  $('.form-group').removeClass(errClass);
+  var origBtnText = btn.text();
+  var submitBtnText = btn.data('disable-with');
 
   var success = function(data) {
     form.find('.alert').text(data.msg).addClass('alert-success');
@@ -21,16 +20,27 @@ $('#new-job-posting').on('submit', function(e){
           .addClass(errClass);
       }
     }
+
+    btn.text(origBtnText).attr('disabled', null);
   };
 
-  var formData = form.serialize();
+  form.on('submit', function(e) {
+    e.preventDefault();
 
-  $.ajax({
-    type: 'POST',
-    url: '/jobs',
-    data: formData,
-    success: success,
-    error: error,
-    dataType: 'json'
+    btn.text(submitBtnText).attr('disabled', 'disabled');
+    form.find('.form-group').removeClass(errClass);
+
+    var formData = form.serialize();
+
+    $.ajax({
+      type: 'POST',
+      url: action,
+      data: formData,
+      success: success,
+      error: error,
+      dataType: 'json'
+    });
   });
-});
+};
+
+jobPostingForm('#new-job-posting', '/jobs');

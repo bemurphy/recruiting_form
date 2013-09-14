@@ -209,7 +209,7 @@ post "/jobs" do
   job_posting = JobPosting.new(params)
 
   if job_posting.save
-    # AdminNotification::Job.new.async.perform(job_posting)
+    AdminNotification::Job.new.async.perform(job_posting)
     status 202
     {
       status: 'ok',
