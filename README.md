@@ -45,9 +45,6 @@ app will run fine with a reloader, other than jobs not executing in time.
 
 ## Todos
 
-- Render form posting validation failures back to the form.  Probably just
-  add the bootstrap error class.
-- Prevent form double submits via js
 - Setup a disposable email address in the system using a token, wired email
   replies via MailGun or SendGrid parse API to be redirected to this address.
 - Set reply-to/from of meetup notification messages to the disposable email
