@@ -9,7 +9,7 @@ Admins will then have the option to approve the posting by clicking on a link in
 will trigger an email generated to the Meetup list.
 
 Essentially, the app acts as an approval proxy of sorts, to give people a place to go, as well
-as postings to the Meetup as slightly increased air of authenticity.
+as give postings to the Meetup a slightly increased air of authenticity.
 
 ## Installation
 
