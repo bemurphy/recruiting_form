@@ -8,8 +8,9 @@ filled out by a recruiter, it will generate an email copy of the posting to admi
 Admins will then have the option to approve the posting by clicking on a link in the email, which
 will trigger an email generated to the Meetup list.
 
-Essentially, the app acts as an approval proxy of sorts, to give people a place to go, as well
-as give postings to the Meetup a slightly increased air of authenticity.
+Essentially, the app acts as an approval proxy of sorts, to give people a place
+to go, as well as give postings to the Meetup a slightly increased air of
+authenticity.
 
 ## Installation
 
@@ -38,10 +39,11 @@ because it's easy, big, and free.  No real user accounts exists, as the
 approval process is performed entirely by email.  This is easier than
 having to login anyway.
 
-Also, note the system uses SuckerPunch for backgrounding the email sending
-to make the web app more snappy.  You can't run the service, even with Thin,
-with a rack reloader such as shotgun and have the mails sent.  However, the
-app will run fine with a reloader, other than jobs not executing in time.
+Also, note the system uses [SuckerPunch](https://github.com/brandonhilkert/sucker_punch)
+for backgrounding the email sending to make the web app more snappy.  You can't
+run the service, even with Thin, with a rack reloader such as shotgun and have
+the mails sent.  However, the app will run fine with a reloader, other than jobs
+not executing in time.
 
 Finally, take note this app is written a bit differently than if you are
 used to Rails web apps. There's a few reasons for this:
