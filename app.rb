@@ -80,8 +80,8 @@ class JobPosting < Scrivener
     approve && save
   end
 
-  def auth_path
-    "#{id}/#{token}"
+  def approved?
+    !! approved_at
   end
 
   private
@@ -115,6 +115,10 @@ class AdminNotification
     @recipient = recipient
   end
 
+  def auth_path
+    "#{posting.id}/#{posting.token}"
+  end
+
   def deliver
     p = posting
 
@@ -124,7 +128,7 @@ class AdminNotification
                    text: MESSAGE % [
                      p.name, p.email,
                      p.company, p.url,
-                     p.description, p.auth_path
+                     p.description, auth_path
                    ])
   end
 
@@ -229,7 +233,7 @@ get "/jobs/:id/:token/approve" do |id, token|
     halt 403, "Forbidden"
   end
 
-  if @job_posting.approved_at
+  if @job_posting.approved?
     erb :already_approved
   else
     MeetupNotification::Job.new.async.perform(@job_posting)
