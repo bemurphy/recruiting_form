@@ -6,6 +6,6 @@ use Rack::Session::Cookie,
   :expire_after => 2592000, # In seconds
   :secret       => ENV.fetch('SESSION_SECRET', SecureRandom.hex(32))
 
-use Rack::Protection::AuthenticityToken
+use Rack::Protection
 
 run Sinatra::Application
