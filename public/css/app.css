@@ -24,6 +24,10 @@ body {
   min-height: 50%;
 }
 
+.relative {
+  position: relative;
+}
+
 .headline {
   text-align: center;
 }
@@ -89,4 +93,17 @@ body {
   color: #737373;
   font-style: italic;
   text-align: center;
+}
+
+.form-group.has-error::before {
+  color: #b94a48;
+  content: '*';
+  font-size: 1.625em;
+  position: absolute;
+  right: 24px;
+  top: 28px;
+}
+
+.form-group.has-error.form-ta::before {
+  right: 10px;
 }
