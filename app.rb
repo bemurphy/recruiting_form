@@ -32,7 +32,7 @@ end
 
 # The serialized form data for a job posting
 class JobPosting < Scrivener
-  attr_accessor :_id, :_rev, :token, :type, :approved_at,
+  attr_accessor :_id, :_rev, :token, :type, :created_at, :approved_at,
     :name, :email, :company, :url, :description
 
   def initialize(*)
@@ -62,6 +62,8 @@ class JobPosting < Scrivener
   def save
     return false unless valid?
 
+    before_save
+
     raw_doc = RestClient.post("#{DB_URL}", attributes.to_json, content_type: 'application/json')
     doc = JSON.parse(raw_doc)
 
@@ -86,6 +88,11 @@ class JobPosting < Scrivener
 
   def init_token
     @token ||= SecureRandom.urlsafe_base64.gsub(/[^a-z0-9]/i, '')
+  end
+
+  def before_save
+    self.email = email.downcase
+    self.created_at ||= Time.now.to_i
   end
 end
 
