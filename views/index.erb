@@ -7,6 +7,10 @@
 
 <div class="island">
   <form action="#" role="form" id="new-job-posting" class='new-job-posting'>
+    <div style="height:0; width:0; display:none; padding:0; margin:0;">
+      <input type="hidden" name="authenticity_token" value="<%= auth_token %>" />
+    </div>
+
     <div class="row">
       <div class="form-group col-lg-6">
         <label for="name">Your full name</label>

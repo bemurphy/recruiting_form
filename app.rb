@@ -198,6 +198,16 @@ configure do
   Malone.connect(url: Settings::MALONE_URL)
 end
 
+helpers do
+  def auth_token
+    session[:csrf] || SecureRandom.hex(32)
+  end
+end
+
+before do
+  params.delete('authenticity_token')
+end
+
 ###
 # Begin Routes
 
