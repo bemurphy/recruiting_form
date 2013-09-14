@@ -43,6 +43,17 @@ to make the web app more snappy.  You can't run the service, even with Thin,
 with a rack reloader such as shotgun and have the mails sent.  However, the
 app will run fine with a reloader, other than jobs not executing in time.
 
+## Tests
+
+The app has a couple basic capybara tests.  Run with:
+
+```shell
+bundle exec rspec spec/submissions_spec.rb
+```
+
+You'll need CouchDB/Cloudant running, with a `recruiting_form_test` database
+already created.
+
 ## Todos
 
 - Setup a disposable email address in the system using a token, wired email

@@ -1,0 +1,4 @@
+--color
+-fs
+-Ispec
+--require spec_helper
