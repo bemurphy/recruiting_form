@@ -1,31 +1,43 @@
-<form action="#" role="form" id="new-job-posting">
-  <div class="form-group">
-    <label for="name">Your full name</label>
-    <input type="text" class="form-control input-lg" name="name">
+<div class="headline">
+  <h1>Looking to hire some of the <strong>best Rubyists</strong> in the Orange County area?</h1>
+  <p class="byline">
+    Fill out the form below. We'll approve it and share it with our members! <u>All fields are required</u>.
+  </p>
+</div>
+
+<div class="island">
+  <form action="#" role="form" id="new-job-posting" class='new-job-posting'>
+    <div class="row">
+      <div class="form-group col-lg-6">
+        <label for="name">Your full name</label>
+        <input type="text" class="form-control" name="name">
+      </div>
+
+      <div class="form-group col-lg-6">
+        <label for="email">Your email address</label>
+        <input type="text" class="form-control" name="email">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-6">
+        <label for="company">Company represented</label>
+        <input type="text" class="form-control" name="company">
+      </div>
+
+      <div class="form-group col-lg-6">
+        <label for="url">Website URL</label>
+        <input type="text" class="form-control" name="url">
+      </div>
   </div>
 
-  <div class="form-group">
-    <label for="email">Your email address</label>
-    <input type="text" class="form-control input-lg" name="email">
-  </div>
+    <div class="form-group">
+      <label for="description">Job description</label>
+      <textarea class="form-control" rows="7" name="description"></textarea>
+    </div>
 
-  <div class="form-group">
-    <label for="company">Company represented</label>
-    <input type="text" class="form-control input-lg" name="company">
-    <p class="help-block">Please list the name of the company that is hiring.</p>
-  </div>
-
-  <div class="form-group">
-    <label for="url">Website URL</label>
-    <input type="text" class="form-control input-lg" name="url">
-    <p class="help-block">A URL for the company or more specific job listing.</p>
-  </div>
-
-  <div class="form-group">
-    <label for="description">Job description</label>
-    <textarea class="form-control input-lg" rows="7" name="description"></textarea>
-  </div>
-
-  <button type="submit" class="btn btn-primary btn-lg" data-disable-with="Submitting...">Submit</button>
-  <div class="alert"></div>
-</form>
+    <button type="submit" class="btn btn-success btn-lg btn-block" data-disable-with="Submitting...">Submit</button>
+    <p class="privacy-disclaimer">We love privacy and we hate spam!</p>
+    <div class="alert"></div>
+  </form>
+</div>

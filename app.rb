@@ -235,10 +235,12 @@ get "/jobs/:id/:token/approve" do |id, token|
   end
 
   if @job_posting.approved?
-    erb :already_approved
+    @message = "Oh hey, looks like that job posting has already been approved!"
   else
     MeetupNotification::Job.new.async.perform(@job_posting)
     @job_posting.approve!
-    erb :approve
+    @message = "Thanks, we've marked that posting approved and sent it on its way!"
   end
+
+  erb :approval
 end
